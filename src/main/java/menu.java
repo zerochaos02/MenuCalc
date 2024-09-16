@@ -153,49 +153,55 @@ public class menu {
         return input;
     }
 
-    public static String calcularFigurasGeometricas(String figura, double... dimensiones) {
+    public static void calcularFigurasGeometricas(String figura, double... dimensiones) {
         try {
             switch (figura.toLowerCase()) {
                 case "cuadrado":
                     double lado = dimensiones[0];
                     double perimetroCuadrado = 4 * lado;
                     double areaCuadrado = lado * lado;
-                    return String.format(Locale.US, "Cuadrado - Perímetro: %.2f, Área: %.2f", perimetroCuadrado, areaCuadrado);
+                    System.out.printf(Locale.US, "Cuadrado - Perímetro: %.2f, Área: %.2f%n", perimetroCuadrado, areaCuadrado);
+                    break;
                 case "rectángulo":
                     double largo = dimensiones[0];
                     double ancho = dimensiones[1];
                     double perimetroRectangulo = 2 * (largo + ancho);
                     double areaRectangulo = largo * ancho;
-                    return String.format(Locale.US, "Rectángulo - Perímetro: %.2f, Área: %.2f", perimetroRectangulo, areaRectangulo);
+                    System.out.printf(Locale.US, "Rectángulo - Perímetro: %.2f, Área: %.2f%n", perimetroRectangulo, areaRectangulo);
+                    break;
                 case "círculo":
                     double radio = dimensiones[0];
                     double perimetroCirculo = 2 * Math.PI * radio;
                     double areaCirculo = Math.PI * Math.pow(radio, 2);
-                    return String.format(Locale.US, "Círculo - Perímetro: %.2f, Área: %.2f", perimetroCirculo, areaCirculo);
+                    System.out.printf(Locale.US, "Círculo - Perímetro: %.2f, Área: %.2f%n", perimetroCirculo, areaCirculo);
+                    break;
                 case "esfera":
                     double radioEsfera = dimensiones[0];
                     double areaEsfera = 4 * Math.PI * Math.pow(radioEsfera, 2);
                     double volumenEsfera = (4.0 / 3.0) * Math.PI * Math.pow(radioEsfera, 3);
-                    return String.format(Locale.US, "Esfera - Área: %.2f, Volumen: %.2f", areaEsfera, volumenEsfera);
+                    System.out.printf(Locale.US, "Esfera - Área: %.2f, Volumen: %.2f%n", areaEsfera, volumenEsfera);
+                    break;
                 case "cubo":
                     double ladoCubo = dimensiones[0];
                     double areaCubo = 6 * Math.pow(ladoCubo, 2);
                     double volumenCubo = Math.pow(ladoCubo, 3);
-                    return String.format(Locale.US, "Cubo - Área: %.2f, Volumen: %.2f", areaCubo, volumenCubo);
+                    System.out.printf(Locale.US, "Cubo - Área: %.2f, Volumen: %.2f%n", areaCubo, volumenCubo);
+                    break;
                 case "cono":
                     double radioCono = dimensiones[0];
                     double alturaCono = dimensiones[1];
                     double generatrizCono = Math.sqrt(Math.pow(radioCono, 2) + Math.pow(alturaCono, 2));
                     double areaCono = Math.PI * radioCono * (radioCono + generatrizCono);
                     double volumenCono = (1.0 / 3.0) * Math.PI * Math.pow(radioCono, 2) * alturaCono;
-                    return String.format(Locale.US, "Cono - Área: %.2f, Volumen: %.2f", areaCono, volumenCono);
+                    System.out.printf(Locale.US, "Cono - Área: %.2f, Volumen: %.2f%n", areaCono, volumenCono);
+                    break;
                 default:
-                    return "Figura no reconocida.";
+                    System.out.println("Figura no reconocida.");
             }
         } catch (ArrayIndexOutOfBoundsException e) {
-            return "Error: Número incorrecto de dimensiones proporcionadas.";
+            System.out.println("Error: Número incorrecto de dimensiones proporcionadas.");
         } catch (Exception e) {
-            return "Error inesperado: " + e.getMessage();
+            System.out.println("Error inesperado: " + e.getMessage());
         }
     }
 
