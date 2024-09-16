@@ -153,55 +153,49 @@ public class menu {
         return input;
     }
 
-    public static void calcularFigurasGeometricas(String figura, double... dimensiones) {
+    public static String calcularFigurasGeometricas(String figura, double... dimensiones) {
         try {
             switch (figura.toLowerCase()) {
                 case "cuadrado":
                     double lado = dimensiones[0];
                     double perimetroCuadrado = 4 * lado;
                     double areaCuadrado = lado * lado;
-                    System.out.printf(Locale.US, "Cuadrado - Perímetro: %.2f, Área: %.2f%n", perimetroCuadrado, areaCuadrado);
-                    break;
+                    return String.format(Locale.US, "Cuadrado - Perímetro: %.2f, Área: %.2f", perimetroCuadrado, areaCuadrado);
                 case "rectángulo":
                     double largo = dimensiones[0];
                     double ancho = dimensiones[1];
                     double perimetroRectangulo = 2 * (largo + ancho);
                     double areaRectangulo = largo * ancho;
-                    System.out.printf(Locale.US, "Rectángulo - Perímetro: %.2f, Área: %.2f%n", perimetroRectangulo, areaRectangulo);
-                    break;
+                    return String.format(Locale.US, "Rectángulo - Perímetro: %.2f, Área: %.2f", perimetroRectangulo, areaRectangulo);
                 case "círculo":
                     double radio = dimensiones[0];
                     double perimetroCirculo = 2 * Math.PI * radio;
                     double areaCirculo = Math.PI * Math.pow(radio, 2);
-                    System.out.printf(Locale.US, "Círculo - Perímetro: %.2f, Área: %.2f%n", perimetroCirculo, areaCirculo);
-                    break;
+                    return String.format(Locale.US, "Círculo - Perímetro: %.2f, Área: %.2f", perimetroCirculo, areaCirculo);
                 case "esfera":
                     double radioEsfera = dimensiones[0];
                     double areaEsfera = 4 * Math.PI * Math.pow(radioEsfera, 2);
                     double volumenEsfera = (4.0 / 3.0) * Math.PI * Math.pow(radioEsfera, 3);
-                    System.out.printf(Locale.US, "Esfera - Área: %.2f, Volumen: %.2f%n", areaEsfera, volumenEsfera);
-                    break;
+                    return String.format(Locale.US, "Esfera - Área: %.2f, Volumen: %.2f", areaEsfera, volumenEsfera);
                 case "cubo":
                     double ladoCubo = dimensiones[0];
                     double areaCubo = 6 * Math.pow(ladoCubo, 2);
                     double volumenCubo = Math.pow(ladoCubo, 3);
-                    System.out.printf(Locale.US, "Cubo - Área: %.2f, Volumen: %.2f%n", areaCubo, volumenCubo);
-                    break;
+                    return String.format(Locale.US, "Cubo - Área: %.2f, Volumen: %.2f", areaCubo, volumenCubo);
                 case "cono":
                     double radioCono = dimensiones[0];
                     double alturaCono = dimensiones[1];
                     double generatrizCono = Math.sqrt(Math.pow(radioCono, 2) + Math.pow(alturaCono, 2));
                     double areaCono = Math.PI * radioCono * (radioCono + generatrizCono);
                     double volumenCono = (1.0 / 3.0) * Math.PI * Math.pow(radioCono, 2) * alturaCono;
-                    System.out.printf(Locale.US, "Cono - Área: %.2f, Volumen: %.2f%n", areaCono, volumenCono);
-                    break;
+                    return String.format(Locale.US, "Cono - Área: %.2f, Volumen: %.2f", areaCono, volumenCono);
                 default:
-                    System.out.println("Figura no reconocida.");
+                    return "Figura no reconocida.";
             }
         } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("Error: Número incorrecto de dimensiones proporcionadas.");
+            return "Error: Número incorrecto de dimensiones proporcionadas.";
         } catch (Exception e) {
-            System.out.println("Error inesperado: " + e.getMessage());
+            return "Error inesperado: " + e.getMessage();
         }
     }
 
@@ -283,7 +277,7 @@ public class menu {
             case 3://Figuras geometricas
                 System.out.println("Ingrese la figura geométrica (cuadrado, rectángulo, círculo, esfera, cubo, cono): ");
                 System.out.println("Ingrese las dimensiones de la figura: ");
-                calcularFigurasGeometricas(leerString(), leerDouble(), leerDouble());
+                    System.out.println(calcularFigurasGeometricas(leerString(), leerDouble(), leerDouble()));
                 break;
             case 4://Sistema ecuaciones lineales
                 double[] coeficientes = new double[6];
